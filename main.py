@@ -29,7 +29,7 @@ def main():
     time.sleep(2)
     element = driver.find_element(by = 'xpath', value = "/html/body/div/div/div/div[3]/section/div[4]/div/div/table/tbody/tr/td[2]/div")
     str_value = element.text
-    return (float_txt(str_value))
+    print(float_txt(str_value))
     
 
 
