@@ -12,7 +12,7 @@ def get_driver():
   options.add_experimental_option("excludeSwitches", ["enable-automation"])
   options.add_argument("disable-blink-features=AutomationControlled")
   driver = webdriver.Chrome(options=options)
-  driver.get("https://coinranking.com/")
+  driver.get("https://coinranking.com/coin/TpHE2IShQw-sJ+algorand-algo")
   return driver
 
 def float_txt(value):
@@ -24,7 +24,6 @@ def float_txt(value):
 
 def main():
   driver = get_driver()
-  driver.find_element(by = "xpath", value = "/html/body/div/div/div/section/table/tbody/tr[25]/td[1]/div/span[3]/a").click()
   while True:
     time.sleep(2)
     element = driver.find_element(by = 'xpath', value = "/html/body/div/div/div/div[3]/section/div[4]/div/div/table/tbody/tr/td[2]/div")
