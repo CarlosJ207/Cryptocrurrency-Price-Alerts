@@ -15,18 +15,21 @@ def get_driver():
   driver.get("https://coinranking.com/")
   return driver
 
-
+def float_txt(value):
+ """Change the 24Hr percentage change from a string to a float object"""
+ float_value = value.replace('%', '') 
+ output = float(float_value)
+ return output 
 
 
 def main():
   driver = get_driver()
   driver.find_element(by = "xpath", value = "/html/body/div/div/div/section/table/tbody/tr[25]/td[1]/div/span[3]/a").click()
-  time.sleep(2)
   while True:
     time.sleep(2)
     element = driver.find_element(by = 'xpath', value = "/html/body/div/div/div/div[3]/section/div[4]/div/div/table/tbody/tr/td[2]/div")
-    value = element.text
-    return type(value)
+    str_value = element.text
+    return (float_txt(str_value))
     
 
 
