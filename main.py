@@ -2,6 +2,8 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.keys import Keys
 from datetime import datetime as dt
+import yagmail
+import os
 def get_driver(): 
 
   options = webdriver.ChromeOptions()
@@ -29,14 +31,27 @@ def main():
   search_button.click()
 
   #Type text into the search button
-  val = input("Enter the name of the cryptocurrenct to monitor:")
+  val = input("Enter 'bitcoin' to begin monitoring: ")
   text_area = driver.find_element(by = 'xpath', value = "//*[@id='__layout']/div/header/div[2]/div[1]/div[1]/div[2]/input")
   text_area.send_keys(val + Keys.RETURN)
   while True:
     time.sleep(2)
     element = driver.find_element(by = 'xpath', value = "/html/body/div/div/div/div[3]/section/div[4]/div/div/table/tbody/tr/td[2]/div")
     str_value = element.text
-    print(float_txt(str_value))
+    value = float_txt(str_value)
+    if (value < -10):
+      sender = 'carlosajurado3@gmail.com'
+      receiver = 'jboel23412@gmail.com'
+      subject = "This is the subject!"
+      contents = """
+      Here is the content of the email! 
+      Hi!
+      """
+      yag = yagmail.SMTP(user=sender, password=os.getenv('PASSWORD'))
+      yag.send(to=receiver, subject=subject, contents=contents)
+      print("Email Sent!")
+    print(value)
+    
     
 
 
