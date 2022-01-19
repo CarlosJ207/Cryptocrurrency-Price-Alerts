@@ -42,11 +42,10 @@ def main():
     if (value < -10):
       sender = 'carlosajurado3@gmail.com'
       receiver = 'jboel23412@gmail.com'
-      subject = "This is the subject!"
-      contents = """
-      Here is the content of the email! 
-      Hi!
-      """
+      subject = "Bitcoin price dropped!"
+      contents = 
+      "Bitcoin is down " + value "%!"
+      
       yag = yagmail.SMTP(user=sender, password=os.getenv('PASSWORD'))
       yag.send(to=receiver, subject=subject, contents=contents)
       print("Email Sent!")
